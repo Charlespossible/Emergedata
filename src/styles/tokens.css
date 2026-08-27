@@ -1,0 +1,49 @@
+/**
+ * Design tokens. Every colour lives here as a CSS variable so a dark theme can be
+ * added later by re-declaring these under [data-theme="dark"] — no component refactor.
+ */
+:root {
+  --brand-50: #eff4fb;
+  --brand-100: #dce7f5;
+  --brand-200: #b9cdea;
+  --brand-300: #8fadda;
+  --brand-400: #5b85c4;
+  --brand-500: #2f5fa8;
+  --brand-600: #1f4e88;
+  --brand-700: #173c6b;
+  --brand-800: #122e52;
+  --brand-900: #0d2340;
+  --brand-950: #081729;
+
+  --accent-50: #fef2f2;
+  --accent-100: #fee2e2;
+  --accent-400: #f05252;
+  --accent-500: #dc2626;
+  --accent-600: #b91c1c;
+  --accent-700: #991b1b;
+
+  --ink-50: #f8fafc;
+  --ink-100: #f1f5f9;
+  --ink-200: #e2e8f0;
+  --ink-300: #cbd5e1;
+  --ink-400: #94a3b8;
+  --ink-500: #64748b;
+  --ink-600: #475569;
+  --ink-700: #334155;
+  --ink-800: #1e293b;
+  --ink-900: #0f172a;
+
+  --chart-green: #16a34a;
+  --chart-amber: #f59e0b;
+  --chart-teal: #0d9488;
+  --chart-violet: #7c3aed;
+
+  --surface: #ffffff;
+  --surface-muted: var(--ink-50);
+  --surface-deep: var(--brand-900);
+  --text-heading: var(--brand-900);
+  --text-body: var(--ink-600);
+  --text-on-deep: var(--brand-100);
+
+  --header-offset: 7rem;
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+.ssr
+.tmp-docx
+.screenshots
+.env
+.env.local
+*.local
+.DS_Store
+stats.html

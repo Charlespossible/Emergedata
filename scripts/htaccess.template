@@ -1,0 +1,51 @@
+# GENERATED FILE — edit scripts/htaccess.template, not dist/.htaccess.
+# __BASE__ is substituted with the deploy base path at build time (BASE_PATH env var).
+#
+# Every route the app has is pre-rendered to a real HTML file, so there is no SPA shell
+# fallback here: a path that does not resolve to a pre-rendered file genuinely is a 404,
+# and should say so rather than returning the home page with a 200.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase __BASE__
+
+  RewriteRule ^index\.html$ - [L]
+
+  # /about -> /about.html, served directly with no redirect.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+?)/?$ __BASE__$1.html [L]
+</IfModule>
+
+# Anything still unresolved: the branded 404 page, with a 404 status.
+ErrorDocument 404 __BASE__404.html
+
+Options -Indexes
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  # Hashed assets are immutable; HTML must always revalidate.
+  <FilesMatch "\.(js|css|woff2|webp|png|jpe?g|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
