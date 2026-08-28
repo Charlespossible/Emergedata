@@ -235,7 +235,10 @@ async function whiteToAlpha(src, crop) {
  */
 const SUPPLIED_PARTNERS = {
   'Dew-drop': { slug: 'dew-drop-foundation' },
-  deal: { slug: 'deal' },
+  // The supplied scan carries a stray grey smudge above the D (source x 11-22, y 24-33).
+  // Cropping to the wordmark is the only clean removal: the smudge is light grey, so any
+  // threshold low enough to drop it also eats the yellow A.
+  deal: { slug: 'deal', crop: { left: 16, top: 32, width: 82, height: 25 } },
   chida: { slug: 'chida' },
 };
 

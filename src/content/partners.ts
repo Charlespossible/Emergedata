@@ -63,6 +63,6 @@ export const partnerLogos: PartnerLogo[] = [
     width: 55,
     height: 77,
   },
-  { name: 'DEAL', file: '/images/partners/deal', width: 90, height: 33 },
+  { name: 'DEAL', file: '/images/partners/deal', width: 82, height: 25 },
   { name: 'CHIDA', file: '/images/partners/chida', width: 94, height: 30 },
 ];
